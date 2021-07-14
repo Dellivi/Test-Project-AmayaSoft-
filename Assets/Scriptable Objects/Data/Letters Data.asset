@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8babc61eae12f394e81841b29bd0b417, type: 3}
+  m_Name: Letters Data
+  m_EditorClassIdentifier: 
+  data:
+  - taskName: M
+    sprite: {fileID: 3295844289267200183, guid: 0bd24696beff1864a8d8625c572bb648,
+      type: 3}
+  - taskName: C
+    sprite: {fileID: 3234300448368640894, guid: 0bd24696beff1864a8d8625c572bb648,
+      type: 3}
+  - taskName: Z
+    sprite: {fileID: 3539555106843919260, guid: 0a13fa3289c349f4e9d30b66fd81fe6f,
+      type: 3}
+  - taskName: T
+    sprite: {fileID: 7112752472869403061, guid: ea1b4042632249247972e3a6fa585729,
+      type: 3}
+  - taskName: X
+    sprite: {fileID: -4461999128152558772, guid: ea1b4042632249247972e3a6fa585729,
+      type: 3}
+  - taskName: K
+    sprite: {fileID: -1127063002332224934, guid: 0bd24696beff1864a8d8625c572bb648,
+      type: 3}
+  - taskName: N
+    sprite: {fileID: -4252152113809563852, guid: ea1b4042632249247972e3a6fa585729,
+      type: 3}
+  - taskName: F
+    sprite: {fileID: -6426668015567183463, guid: 0bd24696beff1864a8d8625c572bb648,
+      type: 3}
+  - taskName: I
+    sprite: {fileID: -3541686595128163680, guid: 0bd24696beff1864a8d8625c572bb648,
+      type: 3}
+  - taskName: B
+    sprite: {fileID: 7783457984840754399, guid: 0bd24696beff1864a8d8625c572bb648,
+      type: 3}
+  - taskName: J
+    sprite: {fileID: -2756605603065543306, guid: 0bd24696beff1864a8d8625c572bb648,
+      type: 3}
+  - taskName: R
+    sprite: {fileID: -6342808464625005154, guid: ea1b4042632249247972e3a6fa585729,
+      type: 3}
+  - taskName: G
+    sprite: {fileID: 216406037199867053, guid: 0bd24696beff1864a8d8625c572bb648, type: 3}
+  - taskName: W
+    sprite: {fileID: -9165466868132007793, guid: ea1b4042632249247972e3a6fa585729,
+      type: 3}
+  - taskName: D
+    sprite: {fileID: 7911670913450602933, guid: 0bd24696beff1864a8d8625c572bb648,
+      type: 3}
+  - taskName: A
+    sprite: {fileID: 4963718625464178563, guid: 0bd24696beff1864a8d8625c572bb648,
+      type: 3}
+  - taskName: O
+    sprite: {fileID: 5433449995169814141, guid: ea1b4042632249247972e3a6fa585729,
+      type: 3}
+  - taskName: V
+    sprite: {fileID: -2983290644488427326, guid: ea1b4042632249247972e3a6fa585729,
+      type: 3}
+  - taskName: H
+    sprite: {fileID: -8235857483100294123, guid: 0bd24696beff1864a8d8625c572bb648,
+      type: 3}
+  - taskName: Y
+    sprite: {fileID: -5001085640463096552, guid: 0a13fa3289c349f4e9d30b66fd81fe6f,
+      type: 3}
+  - taskName: P
+    sprite: {fileID: 4461586319009975920, guid: ea1b4042632249247972e3a6fa585729,
+      type: 3}
+  - taskName: L
+    sprite: {fileID: -5901097786099144959, guid: 0bd24696beff1864a8d8625c572bb648,
+      type: 3}
+  - taskName: Q
+    sprite: {fileID: -4447791616812998045, guid: ea1b4042632249247972e3a6fa585729,
+      type: 3}
+  - taskName: E
+    sprite: {fileID: 4652326554734856401, guid: 0bd24696beff1864a8d8625c572bb648,
+      type: 3}
+  - taskName: S
+    sprite: {fileID: 8083504644574312765, guid: ea1b4042632249247972e3a6fa585729,
+      type: 3}
