@@ -1,24 +1,23 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 using TMPro;
-using System.Linq;
 
-public  class GenerateTask : MonoBehaviour
+public class GenerateTask : MonoBehaviour
 {
     [SerializeField] private BundleData bundleData;
 
     private TextMeshProUGUI textTask;
-    private LevelObject level;
+    private Level level;
 
-    [System.NonSerialized]
+    //[System.NonSerialized]
     public List<TaskObject> taskData = new List<TaskObject>();
 
     [System.NonSerialized]
     public int rand;
 
-    TaskObject taskObj = new TaskObject();
-    public TaskObject TaskObj { get => taskObj; set => taskObj = value; }
+    TaskObject taskObject = new TaskObject();
+
+    public TaskObject TaskObject { get => taskObject; protected set => taskObject = value; }
 
     private void Awake()
     {
@@ -30,7 +29,7 @@ public  class GenerateTask : MonoBehaviour
         SetTask();
     }
 
-    public void SetLevelObj(LevelObject _level)
+    public void SetLevelObj(Level _level)
     {
         this.level = _level;
     }
@@ -46,35 +45,36 @@ public  class GenerateTask : MonoBehaviour
             }
         }
     }
-    
+
     public TaskObject GetLevelTaskObject(int i)
     {
-        return level.transform.GetChild(i).GetComponent<UseObject>().GetTaskObject();
+        return level.transform.GetChild(i).GetComponent<UseObject>().ObjectEntity.GetTaskObject();
     }
 
     public void RemoveTaskObj()
     {
-        taskData.Remove(TaskObj);
-        
+        taskData.Remove(TaskObject);
     }
 
     public void UpdateTask()
     {
-        TaskObj = GetTaskObject();
+        TaskObject = GetTaskObject();
 
-        if (TaskObj.taskName == null)
+        if (TaskObject.taskName == null)
         {
-            level.CreateLevel();
+            level.CreateLevel(); 
+            RemoveTaskObj();
         }
         else
         {
-            textTask.text = "Find " + TaskObj.taskName;
+            textTask.text = "Find " + TaskObject.taskName;
         }
     }
 
     public TaskObject GetTaskObject()
     {
         var a = new TaskObject();
+
         for (int i = Random.Range(0, level.transform.childCount); i < level.transform.childCount; i++)
         {
             for (int j = 0; j < taskData.Count; j++)

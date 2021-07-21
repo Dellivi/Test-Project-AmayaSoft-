@@ -5,29 +5,27 @@ using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour
 {
-    private LevelManager levelManager;
-    private Tweening tween;
+    private LevelController levelManager;
+    private Tweening tween = new Tweening();
     private Image image;
 
     private void OnEnable()
     {
-        levelManager = gameObject.transform.parent.GetChild(1).GetComponent<LevelManager>();
-        tween = gameObject.transform.parent.GetChild(1).GetComponent<Tweening>();
+        levelManager = gameObject.transform.parent.GetComponent<LevelController>();
         image = gameObject.transform.GetComponent<Image>();
     }
 
     private void Start()
     {
         tween.FadeImage(image, 0.5f, 1f);
-
     }
 
-    public void Restart()
+    public void RestartGame()
     {
-        StartCoroutine(RestartCoroutine());
+        StartCoroutine(RestartGameCoroutine());
     }
 
-    private IEnumerator RestartCoroutine()
+    private IEnumerator RestartGameCoroutine()
     {
         tween.FadeImage(image, 1f, 1f);
         gameObject.transform.GetChild(0).gameObject.SetActive(false);

@@ -2,12 +2,13 @@
 using DG.Tweening;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
-public class Tweening : MonoBehaviour
+public class Tweening
 {
     public void Bounce(Transform transform)
     {
-        transform.DOPunchScale(new Vector3(1,1,0), 0.8f, 0, 1);
+        transform.DOPunchScale(new Vector3(1,1,0), 0.9f, 0, 1);
     }
 
     public void EasyInBounce(Transform transform)
@@ -25,6 +26,20 @@ public class Tweening : MonoBehaviour
     {
         image.alphaHitTestMinimumThreshold = 0;
         image.DOFade(value, time);
+    }
+
+    public IEnumerator BounceObjects(Transform transform)
+    {
+        int i = 0;
+        while (transform.childCount > i)
+        {
+            Bounce(transform.GetChild(i).transform);
+            i++;
+
+            yield return new WaitForSeconds(0.6f);
+        }
+
+        yield break;
     }
 
 }

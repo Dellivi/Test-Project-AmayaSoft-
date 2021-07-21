@@ -6,33 +6,25 @@ using UnityEngine.UI;
 
 public class UseObject : MonoBehaviour
 {
-    private LevelObject levelObj;
+    private Level levelObj;
+    private LevelController levelController;
     private GenerateTask task;
-    private TaskObject taskObject;
 
     public GameObject particlePrefab;
 
-    public UnityEvent CompleteEvent;
-    public UnityEvent FailEvent;
+    private TaskObjectEntity objectEntity = new TaskObjectEntity();
+    private Tweening tween = new Tweening();
+
+    public TaskObjectEntity ObjectEntity { get => objectEntity; protected set => objectEntity = value; }
 
     private void Start()
     {
-        levelObj = gameObject.transform.parent.GetComponent<LevelObject>();
+        levelObj = gameObject.transform.parent.GetComponent<Level>();
+        levelController = levelObj.transform.parent.GetComponent<LevelController>();
         task = levelObj.GetGenerateTask();
-
-        gameObject.transform.GetChild(0).GetComponent<Image>().sprite = taskObject.sprite;
+        gameObject.transform.GetChild(0).GetComponent<Image>().sprite = ObjectEntity.GetTaskObject().sprite;
 
         AddEvent(this.gameObject, EventTriggerType.PointerClick, delegate { OnPointerClick(); });
-    }
-
-    public void SetTaskObject(TaskObject _taskObj)
-    {
-        taskObject = _taskObj;
-    }
-
-    public TaskObject GetTaskObject()
-    {
-        return this.taskObject; 
     }
 
     private void OnPointerClick()
@@ -42,24 +34,23 @@ public class UseObject : MonoBehaviour
 
     private IEnumerator TaskObjectEquals()
     {
-        if (task.TaskObj.taskName == taskObject.taskName)
+        if (task.TaskObject.taskName == ObjectEntity.GetTaskObject().taskName)
         {
-            CompleteEvent.Invoke();
-            GameObject a = Instantiate(particlePrefab, transform);
+            tween.Bounce(this.transform);
+            yield return new WaitForSeconds(.1f);
 
-            yield return new WaitForSeconds(1.1f);
+            GameObject a = Instantiate(particlePrefab, transform);
+            yield return new WaitForSeconds(1f);
 
             Destroy(a);
-            task.RemoveTaskObj();
-            levelObj.DoneTask();
-
+            levelController.NextLevel();
         }
         else
         {
-            FailEvent.Invoke();
+            tween.EasyInBounce(this.transform);
         }
-        StopCoroutine(TaskObjectEquals());
 
+        yield break;
     }
 
 
@@ -73,5 +64,21 @@ public class UseObject : MonoBehaviour
         };
         eventTrigger.callback.AddListener(action);
         trigger.triggers.Add(eventTrigger);
+    }
+}
+
+public class TaskObjectEntity
+{
+
+    TaskObject taskObject;
+
+    public virtual void SetTaskObject(TaskObject taskObject)
+    {
+        this.taskObject = taskObject;
+    }
+
+    public TaskObject GetTaskObject()
+    {
+        return this.taskObject;
     }
 }
